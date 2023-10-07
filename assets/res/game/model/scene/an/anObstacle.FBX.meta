@@ -23,26 +23,6 @@
       ],
       "subMetas": {}
     },
-    "bb6d2": {
-      "importer": "gltf-embeded-image",
-      "uuid": "8f7e089c-d423-4f08-8aec-b445b562fb7d@bb6d2",
-      "displayName": "",
-      "id": "bb6d2",
-      "name": "youanzong.png.image",
-      "userData": {
-        "gltfIndex": 0,
-        "fixAlphaTransparencyArtifacts": true,
-        "hasAlpha": false,
-        "type": "texture"
-      },
-      "ver": "1.0.3",
-      "imported": true,
-      "files": [
-        ".json",
-        ".png"
-      ],
-      "subMetas": {}
-    },
     "458c9": {
       "importer": "texture",
       "uuid": "8f7e089c-d423-4f08-8aec-b445b562fb7d@458c9",
@@ -56,8 +36,8 @@
         "magfilter": "linear",
         "mipfilter": "none",
         "anisotropy": 0,
-        "isUuid": true,
-        "imageUuidOrDatabaseUri": "8f7e089c-d423-4f08-8aec-b445b562fb7d@bb6d2"
+        "isUuid": false,
+        "imageUuidOrDatabaseUri": "db://assets/res/game/model/scene/an/youanzong.png"
       },
       "ver": "1.0.22",
       "imported": true,
@@ -102,8 +82,8 @@
   "userData": {
     "imageMetas": [
       {
-        "name": "youanzong.png",
-        "uri": "8f7e089c-d423-4f08-8aec-b445b562fb7d@bb6d2"
+        "name": "youanzong",
+        "uri": "db://assets/res/game/model/scene/an/youanzong.png"
       }
     ],
     "legacyFbxImporter": true,
