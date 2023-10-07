@@ -1,0 +1,9 @@
+{
+  "PathExcel": "project://excel",
+  "PathJson": "../../../assets/resources/config/game/",
+  "PathTs": "../../../assets/script/game/common/table/",
+  "PathTsServer": "project://tsrpc_server/src/module/common/table",
+  "PathTsClient": "project://assets/script/game/common/table",
+  "PathJsonServer": "project://tsrpc_server/src/module/common/table/config",
+  "PathJsonClient": "project://assets/resources/config/game"
+}

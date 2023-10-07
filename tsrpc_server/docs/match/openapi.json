@@ -1,0 +1,539 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TSRPC Open API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/admin/Logined": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "operationId": "admin/Logined",
+        "requestBody": {
+          "description": "Req<Logined>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/admin_PtlLogined_ReqLogined"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResLogined>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/admin_PtlLogined_ResLogined"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/admin/RoomServerJoin": {
+      "post": {
+        "tags": [
+          "admin"
+        ],
+        "operationId": "admin/RoomServerJoin",
+        "requestBody": {
+          "description": "Req<RoomServerJoin>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/admin_PtlRoomServerJoin_ReqRoomServerJoin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomServerJoin>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/admin_PtlRoomServerJoin_ResRoomServerJoin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/MatchStart": {
+      "post": {
+        "operationId": "MatchStart",
+        "requestBody": {
+          "description": "Req<MatchStart>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlMatchStart_ReqMatchStart"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResMatchStart>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlMatchStart_ResMatchStart"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/RoomCreate": {
+      "post": {
+        "operationId": "RoomCreate",
+        "requestBody": {
+          "description": "Req<RoomCreate>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlRoomCreate_ReqRoomCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomCreate>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlRoomCreate_ResRoomCreate"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/RoomList": {
+      "post": {
+        "operationId": "RoomList",
+        "requestBody": {
+          "description": "Req<RoomList>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlRoomList_ReqRoomList"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRoomList>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlRoomList_ResRoomList"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "admin_PtlLogined_ReqLogined": {
+        "type": "object",
+        "properties": {
+          "__ssoToken": {
+            "type": "string",
+            "description": "通行证"
+          },
+          "user": {
+            "$ref": "#/components/schemas/_________module_mongodb_DbUser_DbUser",
+            "description": "玩家数据"
+          }
+        },
+        "required": [
+          "__ssoToken",
+          "user"
+        ],
+        "description": "网关服务器通知匹配服务登录成功"
+      },
+      "_________module_mongodb_DbUser_DbUser": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "number",
+            "description": "自增量唯一标识"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "createtime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "pos": {
+            "$ref": "#/components/schemas/_________tsrpc_types_PlayerState_PlayerPosition",
+            "description": "玩家位置信息"
+          },
+          "rotation": {
+            "$ref": "#/components/schemas/_________tsrpc_types_PlayerState_PlayerRotation",
+            "description": "玩家旋转信息"
+          }
+        },
+        "required": [
+          "key",
+          "username",
+          "createtime"
+        ],
+        "description": "用户表数据结构"
+      },
+      "_________tsrpc_types_PlayerState_PlayerPosition": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "X 轴位置"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y 轴位置"
+          },
+          "z": {
+            "type": "number",
+            "description": "Z 轴位置"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z"
+        ],
+        "description": "玩家位置信息"
+      },
+      "_________tsrpc_types_PlayerState_PlayerRotation": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "四元数 X"
+          },
+          "y": {
+            "type": "number",
+            "description": "四元数 Y"
+          },
+          "z": {
+            "type": "number",
+            "description": "四元数 Z"
+          },
+          "w": {
+            "type": "number",
+            "description": "四元数 W"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z",
+          "w"
+        ],
+        "description": "玩家旋转信息"
+      },
+      "admin_PtlLogined_ResLogined": {
+        "type": "object",
+        "properties": {}
+      },
+      "admin_PtlRoomServerJoin_ReqRoomServerJoin": {
+        "type": "object",
+        "properties": {
+          "serverUrl": {
+            "type": "string",
+            "description": "房间服务器 WebSocket 地址"
+          },
+          "adminToken": {
+            "type": "string",
+            "description": "Token 用于鉴权"
+          }
+        },
+        "required": [
+          "serverUrl",
+          "adminToken"
+        ],
+        "description": "加入房间服务器进入工作状态请求数据"
+      },
+      "admin_PtlRoomServerJoin_ResRoomServerJoin": {
+        "type": "object",
+        "properties": {},
+        "description": "加入房间服务器进入工作状态响应数据"
+      },
+      "PtlMatchStart_ReqMatchStart": {
+        "type": "object",
+        "properties": {},
+        "description": "开始匹配请求信息"
+      },
+      "PtlMatchStart_ResMatchStart": {
+        "type": "object",
+        "properties": {
+          "serverUrl": {
+            "type": "string",
+            "description": "房间服务器地址"
+          },
+          "roomId": {
+            "type": "string",
+            "description": "房间编号"
+          }
+        },
+        "required": [
+          "serverUrl",
+          "roomId"
+        ],
+        "description": "开始匹配响应信息"
+      },
+      "PtlRoomCreate_ReqRoomCreate": {
+        "type": "object",
+        "properties": {
+          "roomName": {
+            "type": "string",
+            "description": "房间名"
+          }
+        },
+        "required": [
+          "roomName"
+        ],
+        "description": "创建房间请求信息"
+      },
+      "PtlRoomCreate_ResRoomCreate": {
+        "type": "object",
+        "properties": {
+          "serverUrl": {
+            "type": "string",
+            "description": "房间服务器地址"
+          },
+          "roomId": {
+            "type": "string",
+            "description": "房间编号"
+          }
+        },
+        "required": [
+          "serverUrl",
+          "roomId"
+        ],
+        "description": "创建房间响应信息"
+      },
+      "PtlRoomList_ReqRoomList": {
+        "type": "object",
+        "properties": {},
+        "description": "在线房间列表请求信息"
+      },
+      "PtlRoomList_ResRoomList": {
+        "type": "object",
+        "properties": {
+          "rooms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "房间名"
+                },
+                "playerNum": {
+                  "type": "integer",
+                  "description": "当前玩家数量"
+                },
+                "playerMax": {
+                  "type": "integer",
+                  "description": "最大玩家数量"
+                },
+                "serverUrl": {
+                  "type": "string",
+                  "description": "房间服务器地址"
+                },
+                "roomId": {
+                  "type": "string",
+                  "description": "房间编号"
+                }
+              },
+              "required": [
+                "name",
+                "playerNum",
+                "playerMax",
+                "serverUrl",
+                "roomId"
+              ]
+            },
+            "description": "房间列表"
+          }
+        },
+        "required": [
+          "rooms"
+        ],
+        "description": "在线房间列表响应信息"
+      },
+      "?bson_ObjectID": {
+        "type": "string"
+      },
+      "?bson_ObjectId": {
+        "type": "string"
+      },
+      "?mongodb_ObjectID": {
+        "type": "string"
+      },
+      "?mongodb_ObjectId": {
+        "type": "string"
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "API 错误",
+              "description": "业务错误（ApiError）返回 HTTP 状态码 200，其它错误返回 HTTP 状态码 500",
+              "properties": {
+                "isSucc": {
+                  "type": "boolean",
+                  "enum": [
+                    false
+                  ],
+                  "default": false
+                },
+                "err": {
+                  "type": "object",
+                  "description": "TsrpcError",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "ApiError",
+                        "NetworkError",
+                        "ServerError",
+                        "ClientError"
+                      ]
+                    },
+                    "code": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "integer"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "type"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

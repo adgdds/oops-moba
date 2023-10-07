@@ -1,0 +1,384 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TSRPC Open API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/GameArea": {
+      "post": {
+        "operationId": "GameArea",
+        "requestBody": {
+          "description": "Req<GameArea>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlGameArea_ReqGameArea"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResGameArea>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlGameArea_ResGameArea"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Login": {
+      "post": {
+        "operationId": "Login",
+        "requestBody": {
+          "description": "Req<Login>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlLogin_ReqLogin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResLogin>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlLogin_ResLogin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    },
+    "/Register": {
+      "post": {
+        "operationId": "Register",
+        "requestBody": {
+          "description": "Req<Register>",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PtlRegister_ReqRegister"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "description": "ApiReturn<ResRegister>",
+                  "properties": {
+                    "isSucc": {
+                      "type": "boolean",
+                      "enum": [
+                        true
+                      ],
+                      "default": true
+                    },
+                    "res": {
+                      "$ref": "#/components/schemas/PtlRegister_ResRegister"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "$ref": "#/components/responses/error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PtlGameArea_ReqGameArea": {
+        "type": "object",
+        "properties": {}
+      },
+      "PtlGameArea_ResGameArea": {
+        "type": "object",
+        "properties": {
+          "area": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "游戏分区名"
+                },
+                "server": {
+                  "type": "string",
+                  "description": "服务器地址"
+                }
+              },
+              "required": [
+                "name",
+                "server"
+              ]
+            }
+          }
+        },
+        "required": [
+          "area"
+        ]
+      },
+      "PtlLogin_ReqLogin": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          }
+        },
+        "required": [
+          "username"
+        ],
+        "description": "登录请求信息"
+      },
+      "PtlLogin_ResLogin": {
+        "type": "object",
+        "properties": {
+          "__ssoToken": {
+            "type": "string",
+            "description": "通行证"
+          },
+          "user": {
+            "$ref": "#/components/schemas/_________module_mongodb_DbUser_DbUser",
+            "description": "玩家唯一标识"
+          }
+        },
+        "required": [
+          "__ssoToken",
+          "user"
+        ],
+        "description": "开始匹配响应信息"
+      },
+      "_________module_mongodb_DbUser_DbUser": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "number",
+            "description": "自增量唯一标识"
+          },
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          },
+          "createtime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "创建时间"
+          },
+          "pos": {
+            "$ref": "#/components/schemas/_________tsrpc_types_PlayerState_PlayerPosition",
+            "description": "玩家位置信息"
+          },
+          "rotation": {
+            "$ref": "#/components/schemas/_________tsrpc_types_PlayerState_PlayerRotation",
+            "description": "玩家旋转信息"
+          }
+        },
+        "required": [
+          "key",
+          "username",
+          "createtime"
+        ],
+        "description": "用户表数据结构"
+      },
+      "_________tsrpc_types_PlayerState_PlayerPosition": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "X 轴位置"
+          },
+          "y": {
+            "type": "number",
+            "description": "Y 轴位置"
+          },
+          "z": {
+            "type": "number",
+            "description": "Z 轴位置"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z"
+        ],
+        "description": "玩家位置信息"
+      },
+      "_________tsrpc_types_PlayerState_PlayerRotation": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "number",
+            "description": "四元数 X"
+          },
+          "y": {
+            "type": "number",
+            "description": "四元数 Y"
+          },
+          "z": {
+            "type": "number",
+            "description": "四元数 Z"
+          },
+          "w": {
+            "type": "number",
+            "description": "四元数 W"
+          }
+        },
+        "required": [
+          "x",
+          "y",
+          "z",
+          "w"
+        ],
+        "description": "玩家旋转信息"
+      },
+      "PtlRegister_ReqRegister": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "用户名"
+          }
+        },
+        "required": [
+          "username"
+        ],
+        "description": "用户注册请求"
+      },
+      "PtlRegister_ResRegister": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "description": "用户注册应响应"
+      },
+      "?bson_ObjectID": {
+        "type": "string"
+      },
+      "?bson_ObjectId": {
+        "type": "string"
+      },
+      "?mongodb_ObjectID": {
+        "type": "string"
+      },
+      "?mongodb_ObjectId": {
+        "type": "string"
+      }
+    },
+    "responses": {
+      "error": {
+        "description": "Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "title": "API 错误",
+              "description": "业务错误（ApiError）返回 HTTP 状态码 200，其它错误返回 HTTP 状态码 500",
+              "properties": {
+                "isSucc": {
+                  "type": "boolean",
+                  "enum": [
+                    false
+                  ],
+                  "default": false
+                },
+                "err": {
+                  "type": "object",
+                  "description": "TsrpcError",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "ApiError",
+                        "NetworkError",
+                        "ServerError",
+                        "ClientError"
+                      ]
+                    },
+                    "code": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "integer"
+                        }
+                      ],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "message",
+                    "type"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

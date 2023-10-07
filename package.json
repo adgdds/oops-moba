@@ -1,0 +1,18 @@
+{
+  "creator": {
+    "version": "3.8.0"
+  },
+  "dependencies": {
+    "crypto-es": "^1.2.7",
+    "mongodb": "^4.4.0",
+    "seedrandom": "^3.0.5",
+    "tsrpc-browser": "^3.4.5",
+    "tsrpc-miniapp": "^3.4.5"
+  },
+  "description": "全栈开发演示",
+  "name": "oops-moba",
+  "uuid": "ec2b72a0-02fa-4ca3-a756-4e03af0dd847",
+  "version": "3.8.0",
+  "_sourceId": "dd3bb6a5-a8e2-4095-95c7-80710684efc3",
+  "_storeId": "21ef8dc3e731a178adfc07e791a9717c"
+}
